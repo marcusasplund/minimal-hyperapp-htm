@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>minimal hyperapp and htm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./lib/sakura.css" />
+  </head>
+  <body>
+    <script type="module">
+
+    import { h, app } from './lib/hyperapp.js'
+    import htm from './lib/htm.js'
+
+    const html = htm.bind(h)
+
+    const state = {
+      count: 0
+    }
+
+    const actions = {
+      down: value => state => ({ count: state.count - value }),
+      up: value => state => ({ count: state.count + value })
+    }
+
+    const view = (state, actions) =>
+      html`<div>
+             <h1>${state.count}</h1>
+             <button onclick=${e => actions.down(1)}>-</button>
+             <button onclick=${e => actions.up(1)}>+</button>
+          </div>`
+
+    app(state, actions, view, document.body)
+
+    </script>
+  </body>
+</html>
