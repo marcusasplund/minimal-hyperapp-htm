@@ -11,7 +11,7 @@ cd minimal-hyperapp-htm
 
 ## Start your favorite server
 ```bash
- python -m http.server 8000
+ python3 -m http.server 8000
 
 ```
 Open up https://localhost:8000
